@@ -12,15 +12,16 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-First the user will login to the app or create a new account. Once they login, they will be shown a map which they can choose landmarks of where they want to go. Based on their choice, they will be shown pictures of numerous places to go. They can double click to certain places to favorite them for later or they can tap once to give a description of the place. There will be a page where each user can go to their favorite places they marked to see. Google places is the main API and database I will be pulling from.  
+An app where the user can select a point on a map and then be taken to a view of all of the best spots in the selected area. Once a spot is double tapped, it will be saved into your favorites to view later. Users can also find discounted flights and hotels in the areas selected. Users will be able to navigate between the map, personalized favorites, flights, and hotels.
+
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
+- **Category: Lifestyle**
+- **Mobile: This app is great on a phone since you are always on the go while traveling. Having it on your phone is much more accessible rather than on a computer**
+- **Story: Organizes all of the information a person needs/wants in a single place for them to fulfill their dreams and goals of traveling**
+- **Market: Anybody who wants to travel or go on vacation. Schools and clubs can even use the app for field trips or convention trips**
+- **Habit: Users will love to just hop on the app just to scroll through cool looking places or keep an eye on flight/hotel prices**
 - **Scope:**
 
 ## Product Spec
@@ -57,12 +58,19 @@ First the user will login to the app or create a new account. Once they login, t
     * Places must show user ratings from the google API
 * Favorites Page
     * User must be able to double tap a place in order to favorite it
+* Flight
+    * Pulls from a travel flight api to pull prices for selected places
+* Hotel
+    * Pulls from a hotel api to pull prices and availability for a selected location
+
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
 * Home(The Map)
+* Flight
+* Hotel
 * Favorites
 * Account
 
@@ -83,7 +91,7 @@ First the user will login to the app or create a new account. Once they login, t
 
 ### [BONUS] Interactive Prototype
 
-## Schema 
+## Schema
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
