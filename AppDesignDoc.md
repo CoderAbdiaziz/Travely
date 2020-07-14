@@ -12,17 +12,18 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-An app where the user can select a point on a map and then be taken to a view of all of the best spots in the selected area. Once a spot is double tapped, it will be saved into your favorites to view later. Users can also find discounted flights and hotels in the areas selected. Users will be able to navigate between the map, personalized favorites, flights, and hotels.
+A traveling app! An app where the user can select a point on a map where they are currently or going to view all of the popular spots in the area selected. Douple tapping a selected area will favorite it and leave it for you to view later. You can even share your list with friends, or see their lists.
+
 
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
 - **Category: Lifestyle**
-- **Mobile: This app is great on a phone since you are always on the go while traveling. Having it on your phone is much more accessible rather than on a computer**
-- **Story: Organizes all of the information a person needs/wants in a single place for them to fulfill their dreams and goals of traveling**
+- **Mobile: This app is great on a phone since you are always on the go while traveling. Having it on your phone is much more accessible rather than on a computer. This is especially the case with communicating with friends and sharing lists on the go**
+- **Story: Organizes all of the information a person needs/wants in a single place for them to fulfill their dreams and goals of traveling. You can even share these personalized lists with friends**
 - **Market: Anybody who wants to travel or go on vacation. Schools and clubs can even use the app for field trips or convention trips**
-- **Habit: Users will love to just hop on the app just to scroll through cool looking places or keep an eye on flight/hotel prices**
-- **Scope:**
+- **Habit: Looking through comments and sharing locations with friends can become addicting. Users continously will want to come back and see what pictures their friends shared with them**
+- **Scope: It will be a local storage of places within California. Users that want to find a place in california near them or accross the state. It can turn into a map of the country, then of the world. It can also potentially included a social media feel where you can meet others with similar lists.**
 
 ## Product Spec
 
@@ -30,26 +31,31 @@ An app where the user can select a point on a map and then be taken to a view of
 
 **Required Must-have Stories**
 
-* User must be able to login/create an account
-* The place chosen from the map must bring you to a page filled with different places travelers would like to go to.
-* Must be an option to favorite places and be able to look at a list of all favorites
-    * Should be able to remove places from favorites as well
-* Zoom in animation when map is clicked into the designated spot which was click
-* Places must show user ratings from the google API
-* ...
+* Users must be able to login/logout
+* User must be able to create an account
+* Clicking on the map should bring you to that specific city with a list(recycler view) of popular places in the vicinity
+    * sorted by most popular (optional)
+* Double tapping on a place should favorite it and should show up on your favorites page
+    * some sort of toast saying "Added to Favorites"
+    * able to remove places from your favorites list
+* Tapping a place should give you details of that place
+    * Pictures, rating, reviews, add a review(link it to google maps reviews)
+* Zoom in animation once map point was clicked in
+* Share your list or any specific location with a friend on Facebook
 
 **Optional Nice-to-have Stories**
 
-* Sync accounts with google accounts
-    * Account will show at the top right with their profile picture they set as well
-* Users can customize the accounts they made in the app
-* ...
+* Feed activity/fragment where it shows your friends photos they've posted
+* You can look at your friends lists on their page
+* customize user pages with facebook information
+* a search option where you dont have to click the map and can go to a specific place right away
+
+
 
 ### 2. Screen Archetypes
 
 * Login Screen
    * User must be able to login/create an account
-   * ...
 * The map
    * User is able to click the map and have a zoomin animation into the designated spot which was clicked
 * A listview of pictures in the area you selected
@@ -58,10 +64,7 @@ An app where the user can select a point on a map and then be taken to a view of
     * Places must show user ratings from the google API
 * Favorites Page
     * User must be able to double tap a place in order to favorite it
-* Flight
-    * Pulls from a travel flight api to pull prices for selected places
-* Hotel
-    * Pulls from a hotel api to pull prices and availability for a selected location
+    * Show all the places that have been favorited and can remove or share
 
 
 ### 3. Navigation
@@ -69,23 +72,28 @@ An app where the user can select a point on a map and then be taken to a view of
 **Tab Navigation** (Tab to Screen)
 
 * Home(The Map)
-* Flight
-* Hotel
 * Favorites
+* Feed(Optional)
 * Account
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Intro screen
+    * takes you to either login or signup based on what you click
+* Login or Signin Screen
+    * Takes you to the actual app now
+* Map screen
+    * Here you can click where you'd like to go on the map
+    * takes you to a list of places
+* Popular places screen
+    * Takes you to place details page once a user clicks on a specific place
+* Place details
+    * From here you can either go back via the android back button or use the navigation view
+    * using the navigation view will take you to either map, favorites, or account info  (can take you to feed if implimented)
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="wireframe.jpg" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
