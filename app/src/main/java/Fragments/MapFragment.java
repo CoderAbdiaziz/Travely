@@ -10,6 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.travely.R;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.net.PlacesClient;
+
+import static com.parse.Parse.getApplicationContext;
 
 public class MapFragment extends Fragment {
 
@@ -24,6 +28,13 @@ public class MapFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Initialize the SDK
+        Places.initialize(getApplicationContext(), "AIzaSyBaJ3CFZqfgbU804rsS_RD73xuLnPEzFc8");
+
+        // Create a new PlacesClient instance
+        PlacesClient placesClient = Places.createClient(getContext());
+
 
         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
             @Override
