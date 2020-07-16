@@ -9,18 +9,13 @@ import org.json.JSONArray;
 
 @ParseClassName("Post")
 public class Feed extends ParseObject {
-    public static final String PLACE_NAME = "placeName";
     public static final String FAVORITE_LIST = "favoritelist";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String PROFILE_PIC = "profilepic";
     public static final String KEY_USER = "username";
 
-    public String getPlaceName() {
-        return getString(PLACE_NAME);
-    }
+    public Feed() {
 
-    public void setPlaceName(String placeName) {
-        put(PLACE_NAME, placeName);
     }
 
     public JSONArray getFavoriteList(){
@@ -31,7 +26,7 @@ public class Feed extends ParseObject {
         put(FAVORITE_LIST, favoriteList);
     }
 
-    public ParseFile getImage() {
+    public ParseFile getProfilePic() {
         return getParseFile(PROFILE_PIC);
     }
 
@@ -46,6 +41,4 @@ public class Feed extends ParseObject {
     public void setUser(ParseUser user) {
         put(KEY_USER, user);
     }
-
-
 }
