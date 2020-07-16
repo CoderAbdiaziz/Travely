@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new ProfileFragment();
                         break;
                 }
-                // What does this do
+                // TODO: What does this line do?
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
-        // set default selection
+        // set default selection to be the map since that is what the user will see first.
         bottomNavigationView.setSelectedItemId(R.id.action_map);
 
     }
