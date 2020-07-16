@@ -35,13 +35,5 @@ public class MapFragment extends Fragment {
         // Create a new PlacesClient instance
         PlacesClient placesClient = Places.createClient(getContext());
 
-
-        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(MapFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });
     }
 }

@@ -14,12 +14,12 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_feed"
-        android:icon="@drawable/feeddrawable"
+        android:icon="@drawable/feed"
         android:title="Feed"
         app:showAsAction="always" />
     <item
-        android:id="@+id/activity_profile"
-        android:icon="@drawable/profiledrawable"
+        android:id="@+id/action_profile"
+        android:icon="@drawable/profile"
         android:title="Profile"
         app:showAsAction="always" />
 </menu>
