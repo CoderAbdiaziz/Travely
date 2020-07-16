@@ -112,13 +112,13 @@ A traveling app! An app where the user can select a point on a map where they ar
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="Wireframe.jpeg" width=600>
+<img src="fullview.jpgg" width=600>
 <img src="Login.jpeg" width=300>
-<img src="list.jpeg" width=300>
-<img src="map.jpeg" width=300>
-<img src="profile.jpeg" width=300>
-<img src="feed.jpeg" width=300>
-<img src="favorites.jpeg" width=300>
+<img src="LOP.jpgg" width=300>
+<img src="map.jpg" width=300>
+<img src="pp.jpg" width=300>
+<img src="feed.jpg" width=300>
+<img src="fav.jpgg" width=300>
 
 
 ### [BONUS] Digital Wireframes & Mockups
