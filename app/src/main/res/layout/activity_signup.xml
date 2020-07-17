@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
     <TextView
-        android:id="@+id/Login"
+        android:id="@+id/SignUp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -18,16 +19,16 @@
         android:layout_marginTop="125dp"
         android:fontFamily="casual"
         android:gravity="center"
-        android:text="Login"
+        android:text="Create an Account Here!"
         android:textSize="30sp" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Login"
+        android:layout_below="@+id/SignUp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName" />
@@ -38,45 +39,19 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etUsername"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignup"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etPassword"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:text="Log In" />
-
-
-    <Button
-        android:id="@+id/btnGooglesign"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="25dp"
-        android:text="sign in with google" />
-
-    <TextView
-        android:id="@+id/tvSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnGooglesign"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="474dp"
-        android:text="Don't have an account? Sign up here!" />
-
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:text="Sign Up" />
 </RelativeLayout>

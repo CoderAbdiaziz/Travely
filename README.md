@@ -39,15 +39,16 @@ A traveling app! An app where the user can select a point on a map where they ar
     * able to remove places from your favorites list
     * This option will be on the place details page
 * Tapping a place should give you details of that place
-    * Pictures, rating, reviews, add a review(link it to google maps reviews)
-* Share your list or any specific location with a friend on Facebook
-* Feed fragment where it shows your friends favorites lists
+    * Pictures, rating, reviews
+* Share your favorites list with a friend on Facebook
+* Feed fragment where it shows your others in your area favorites lists
+<!-- Complex algorithm where your feed is based on your favorites list -->
 * Zoom in animation once map point was clicked in
 
 **Optional Nice-to-have Stories**
 
 * Post pictures of places on feed
-* add your own review
+* add your own review and link it to google maps reviews
 * sort favorites by most popular
 * You can look at your friends lists on their page
 * customize user pages with facebook information

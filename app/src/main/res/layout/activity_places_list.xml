@@ -7,7 +7,7 @@
     tools:context=".PlacesList">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPlacelist"
+        android:id="@+id/rvFeed"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
