@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B6DFE4"
     tools:context=".LoginActivity">
+
 
     <TextView
         android:id="@+id/Login"
@@ -76,7 +77,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="474dp"
+        android:layout_marginTop="442dp"
         android:text="Don't have an account? Sign up here!" />
+
 
 </RelativeLayout>

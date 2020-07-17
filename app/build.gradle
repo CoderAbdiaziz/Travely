@@ -41,6 +41,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation "androidx.recyclerview:recyclerview:${recyclerViewVersion}"
 
+    // card view build dependencies
+    implementation "androidx.cardview:cardview:1.0.0"
+
 
     // bottom navigation view dependencies
     implementation "androidx.appcompat:appcompat:${appCompatVersion}"

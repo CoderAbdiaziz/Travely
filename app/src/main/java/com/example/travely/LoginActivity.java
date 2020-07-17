@@ -28,6 +28,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // make sure user data persists
+        if (ParseUser.getCurrentUser() != null) {
+            goMainActivity();
+        }
+
         tvSignup = findViewById(R.id.tvSignup);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);

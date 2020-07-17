@@ -40,8 +40,6 @@ public class SignupActivity extends AppCompatActivity {
                 // user helper method to actually create the user
                 createdUser(username,password);
                 goLoginActivity();
-
-
             }
         });
     }

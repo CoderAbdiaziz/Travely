@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B6DFE4"
     tools:context="Fragments.ProfileFragment">
 
     <LinearLayout
@@ -15,6 +16,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="This is the profile page" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Log Out" />
     </LinearLayout>
 
 </FrameLayout>
