@@ -2,23 +2,28 @@ package com.example.travely;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.widget.SearchView;
 
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.SearchView;
 
 import Fragments.FavoritesFragment;
 import Fragments.FeedFragment;
 import Fragments.MapFragment;
 import Fragments.ProfileFragment;
+
+import static androidx.core.view.MenuItemCompat.getActionView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,11 +68,42 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        // in our case, the search bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        // locate the id of the search item and store in variable
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        // tried MenuItemCompat.getActionView(search) but getActionView was depecrated(crossed out)
+        // stack overflow told me to use this instead since this method was deprecated in API level 26.0.0
+        // a method being deprecated means it should no longer be used since a better one was created
+        final SearchView searchView = (SearchView) searchItem.getActionView();
 
-        
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // perform query here
 
-        return true;
+                // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
+                // see https://code.google.com/p/android/issues/detail?id=24599
+
+                searchView.clearFocus();
+                // once something has been searched go to the places list activity
+                // TODO: create an if statement for if the user searches for something that google cant provide a place list for
+                goPlaceActivity();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void goPlaceActivity() {
+        Intent intent = new Intent(this, PlacesActivity.class);
+        startActivity(intent);
     }
 
 }
