@@ -37,6 +37,25 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1' // for logging API calls to LogCat
     implementation 'com.google.android.libraries.places:places:2.3.0'
 
+    // google play services dependencies
+    implementation 'com.google.android.gms:play-services-plus:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.google.android.gms:play-services-base:17.3.0'
+    implementation 'com.google.android.gms:play-services-identity:17.0.0'
+    implementation 'com.google.android.gms:play-services-analytics:17.0.0'
+    implementation 'com.google.android.gms:play-services-awareness:18.0.0'
+    implementation 'com.google.android.gms:play-services-cast:18.1.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    implementation 'com.google.android.gms:play-services-drive:17.0.0'
+    implementation 'com.google.android.gms:play-services-fitness:18.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-vision:20.1.0'
+    implementation 'com.google.android.gms:play-services-nearby:17.0.0'
+    implementation 'com.google.android.gms:play-services-panorama:17.0.0'
+    implementation 'com.google.android.gms:play-services-games:19.0.0'
+    implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
+    implementation 'com.google.android.gms:play-services-wallet:18.0.0'
+    implementation 'com.google.android.gms:play-services-wearable:17.0.0'
     // recycler view build dependencies
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation "androidx.recyclerview:recyclerview:${recyclerViewVersion}"
