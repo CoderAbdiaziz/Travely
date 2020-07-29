@@ -35,7 +35,11 @@ public class PlacesActivity extends AppCompatActivity {
         // 2. create the data source
         // 3. set the adapter on the recycler view
         // 4. set the layout manager on the recycler view
+       querypost();
 
+    }
+
+    private void querypost() {
         String query = getIntent().getStringExtra("search text");
 
         // Create a new token for the autocomplete session. Pass this to FindAutocompletePredictionsRequest,
@@ -70,7 +74,7 @@ public class PlacesActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
+
+
 }
