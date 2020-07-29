@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     final FragmentManager fragmentManager = getSupportFragmentManager();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 searchView.clearFocus();
                 // once something has been searched go to the places list activity
                 // TODO: create an if statement for if the user searches for something that google cant provide a place list for
-                goPlaceActivity();
+                goPlaceActivity(query);
                 return true;
             }
 
@@ -101,8 +102,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void goPlaceActivity() {
+    private void goPlaceActivity(String query) {
         Intent intent = new Intent(this, PlacesActivity.class);
+        intent.putExtra("search text",query);
         startActivity(intent);
     }
 
