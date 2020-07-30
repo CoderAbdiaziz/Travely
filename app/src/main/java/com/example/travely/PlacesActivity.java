@@ -6,8 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.location.places.Place;
@@ -27,11 +31,19 @@ public class PlacesActivity extends AppCompatActivity {
 
     public static final String TAG = "PlacesActivity";
     private Context context;
+    ImageView ivPlaceImage;
+    TextView tvPlaceName;
+    TextView tvDescription;
+    Button btnFavorite;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places);
+        ivPlaceImage = findViewById(R.id.ivPlaceImage);
+        tvPlaceName = findViewById(R.id.tvPlaceName);
+        tvDescription = findViewById(R.id.tvDescription);
 
 
        querypost();

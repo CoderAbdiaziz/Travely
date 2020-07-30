@@ -33,17 +33,17 @@ A traveling app! An app where the user can select a point on a map where they ar
 
 * Users must be able to login/logout
 * User must be able to create an account
-* Clicking on the map should bring you to that specific city with a list(recycler view) of popular places in the vicinity
 * Clicking the favorites button should let you add a place to your favorites list
     * some sort of toast saying "Added to Favorites"
     * able to remove places from your favorites list
     * This option will be on the place details page
-* Tapping a place should give you details of that place
-    * Pictures, rating, reviews
+* Searching a place should give you details of that place
+    * Picture, Description, Rating
 * Share your favorites list with a friend on Facebook
-* Feed fragment where it shows your others in your area favorites lists
+* Feed fragment where it shows other peoples favorites lists
 <!-- Complex algorithm where your feed is based on your favorites list -->
-* Zoom in animation once map point was clicked in
+* animation for when a place has been favorited
+* algorithm that shows people on your feed that have similar favorites
 
 **Optional Nice-to-have Stories**
 
