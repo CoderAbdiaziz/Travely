@@ -2,12 +2,15 @@ package com.example.travely;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.libraries.places.api.Places;
@@ -17,24 +20,20 @@ import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRe
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlacesActivity extends AppCompatActivity {
 
-    private RecyclerView rvLists;
     public static final String TAG = "PlacesActivity";
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places);
 
-        rvLists = findViewById(R.id.rvLists);
 
-        // TODO: steps to creating a Recycler View
-        // 0. create layout for one row in the list
-        // 1. create the adapater
-        // 2. create the data source
-        // 3. set the adapter on the recycler view
-        // 4. set the layout manager on the recycler view
        querypost();
 
     }
@@ -49,7 +48,6 @@ public class PlacesActivity extends AppCompatActivity {
 
         // Use the builder to create a FindAutocompletePredictionsRequest.
         FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
-
                 .setSessionToken(token)
                 .setQuery(query)
                 .build();
@@ -60,10 +58,14 @@ public class PlacesActivity extends AppCompatActivity {
         placesClient.findAutocompletePredictions(request).addOnSuccessListener(new OnSuccessListener<FindAutocompletePredictionsResponse>() {
             @Override
             public void onSuccess(FindAutocompletePredictionsResponse findAutocompletePredictionsResponse) {
+
                 for (AutocompletePrediction prediction : findAutocompletePredictionsResponse.getAutocompletePredictions()) {
                     Log.i(TAG, prediction.getPlaceId());
+
                     Log.i(TAG, prediction.getPrimaryText(null).toString());
                 }
+
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
