@@ -5,6 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -14,9 +21,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.appcompat.widget.SearchView;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import java.util.Arrays;
 
 import Fragments.FavoritesFragment;
 import Fragments.FeedFragment;
@@ -29,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     final FragmentManager fragmentManager = getSupportFragmentManager();
+    public static final String TAG = "MainActivity";
 
 
 
@@ -90,7 +101,11 @@ public class MainActivity extends AppCompatActivity {
                 searchView.clearFocus();
                 // once something has been searched go to the places list activity
                 // TODO: create an if statement for if the user searches for something that google cant provide a place list for
-                goPlaceActivity(query);
+                // initialize the autocomplete fragment
+
+
+
+                goDetailsActivity(query);
                 return true;
             }
 
@@ -102,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void goPlaceActivity(String query) {
-        Intent intent = new Intent(this, PlacesActivity.class);
+    private void goDetailsActivity(String query) {
+        Intent intent = new Intent(this, DetailsActivity.class);
         intent.putExtra("search text",query);
         startActivity(intent);
     }
