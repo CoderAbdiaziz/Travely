@@ -8,13 +8,13 @@ import com.parse.ParseUser;
 import org.json.JSONArray;
 
 @ParseClassName("Post")
-public class Feed extends ParseObject {
+public class Post extends ParseObject {
     public static final String FAVORITE_LIST = "favoritelist";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String PROFILE_PIC = "profilepic";
     public static final String KEY_USER = "username";
 
-    public Feed() {
+    public Post() {
 
     }
 

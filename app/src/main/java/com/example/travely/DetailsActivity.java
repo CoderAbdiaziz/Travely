@@ -3,8 +3,10 @@ package com.example.travely;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +32,7 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,6 +47,8 @@ public class DetailsActivity extends AppCompatActivity {
     String placeID;
     PlacesClient placesClient;
     String placeName;
+    List<String> favoritesList = new ArrayList<String>();
+
 
 
     @Override
@@ -60,8 +65,14 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: add the designated place to the users favorites list by appending to the array in the parse database
+                if(placeName != null) {
+                    favoritesList.add(placeName);
 
-
+                }
+                // tester if my list is actually getting updated on the click of the favorites button
+                for (int counter = 0; counter < favoritesList.size(); counter ++) {
+                    Log.i(TAG, "List: " + favoritesList.get(counter));
+                }
             }
         });
         queryPost();
@@ -95,7 +106,6 @@ public class DetailsActivity extends AppCompatActivity {
                     placeID = prediction.getPlaceId();
                     Log.i(TAG, prediction.getPlaceId());
                     Log.i(TAG, prediction.getPrimaryText(null).toString());
-                    Log.i(TAG, "PlaceID inside the function "+ placeID);
                 }
                 placeGet();
 

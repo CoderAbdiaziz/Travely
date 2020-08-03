@@ -8,10 +8,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.travely.FavoritesAdapter;
 import com.example.travely.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FavoritesFragment extends Fragment {
+
+    RecyclerView rvFavorites;
+    private FavoritesAdapter adapter;
+    List<String> allPlaces;
+
+
+
 
     @Override
     public View onCreateView(
@@ -24,6 +37,17 @@ public class FavoritesFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        rvFavorites = view.findViewById(R.id.rvFavorites);
+
+        allPlaces = new ArrayList<String>();
+        adapter = new FavoritesAdapter(getContext(), allPlaces);
+
+        rvFavorites.setAdapter(adapter);
+
+        rvFavorites.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // TODO: currently the recyclerview list is empty. I have to update it
 
 
     }
