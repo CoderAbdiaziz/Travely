@@ -48,6 +48,7 @@ public class DetailsActivity extends AppCompatActivity {
     PlacesClient placesClient;
     String placeName;
     List<String> favoritesList = new ArrayList<String>();
+    protected FavoritesAdapter adapter;
 
 
 
@@ -66,8 +67,7 @@ public class DetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO: add the designated place to the users favorites list by appending to the array in the parse database
                 if(placeName != null) {
-                    favoritesList.add(placeName);
-
+                    adapter.add(placeName);
                 }
                 // tester if my list is actually getting updated on the click of the favorites button
                 for (int counter = 0; counter < favoritesList.size(); counter ++) {

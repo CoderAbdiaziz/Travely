@@ -16,11 +16,11 @@ import java.util.List;
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
 
     private Context context;
-    private List<String> placeName;
+    private List<String> places;
 
-    public FavoritesAdapter(Context context, List<String> placeName) {
+    public FavoritesAdapter(Context context, List<String> places) {
         this.context = context;
-        this.placeName = placeName;
+        this.places = places;
     }
 
     @NonNull
@@ -32,13 +32,18 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String place = placeName.get(position);
+        String place = places.get(position);
         holder.bind(place);
     }
 
     @Override
     public int getItemCount() {
-        return placeName.size();
+        return places.size();
+    }
+
+    public void add(String place) {
+        places.add(places.size()-1, place);
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,10 +57,8 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
         public void bind(String place) {
             // bind the place name data to the view elements
-
             tvPlace.setText(place);
         }
     }
-
 
 }

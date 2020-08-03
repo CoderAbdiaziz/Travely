@@ -18,7 +18,7 @@ public class Post extends ParseObject {
 
     }
 
-    public JSONArray getFavoriteList(){
+    public JSONArray getFavoriteList(int i){
         return getJSONArray(FAVORITE_LIST);
     }
 

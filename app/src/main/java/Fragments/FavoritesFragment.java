@@ -20,7 +20,7 @@ import java.util.List;
 public class FavoritesFragment extends Fragment {
 
     RecyclerView rvFavorites;
-    private FavoritesAdapter adapter;
+    protected FavoritesAdapter adapter;
     List<String> allPlaces;
 
 
@@ -47,7 +47,7 @@ public class FavoritesFragment extends Fragment {
 
         rvFavorites.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // TODO: currently the recyclerview list is empty. I have to update it
+        // TODO: currently the recyclerview list is empty. I have to update it and add to the list
 
 
     }
