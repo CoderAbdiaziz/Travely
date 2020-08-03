@@ -28,6 +28,8 @@ import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRe
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
+import org.w3c.dom.Text;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,10 +39,11 @@ public class DetailsActivity extends AppCompatActivity {
     ImageView ivPlaceImage;
     TextView tvPlaceName;
     TextView tvRating;
+    TextView tvUserRating;
     Button btnFavorite;
     String placeID;
     PlacesClient placesClient;
-    String attributions;
+    String placeName;
 
 
     @Override
@@ -51,11 +54,14 @@ public class DetailsActivity extends AppCompatActivity {
         ivPlaceImage = findViewById(R.id.ivPlaceImage);
         tvPlaceName = findViewById(R.id.tvPlaceName);
         tvRating = findViewById(R.id.tvRating);
+        tvUserRating = findViewById(R.id.tvUserRating);
         btnFavorite = findViewById(R.id.btnFavorite);
         btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO: add the designated place to the users favorites list by appending to the array in the parse database
+
+
             }
         });
         queryPost();
@@ -109,7 +115,7 @@ public class DetailsActivity extends AppCompatActivity {
     private void placeGet() {
         // Construct a request object, passing the place ID and fields array.
 
-        List<com.google.android.libraries.places.api.model.Place.Field> placeMoreFields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.PHOTO_METADATAS, Place.Field.RATING);
+        List<com.google.android.libraries.places.api.model.Place.Field> placeMoreFields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.PHOTO_METADATAS, Place.Field.RATING, Place.Field.USER_RATINGS_TOTAL);
 
         final FetchPlaceRequest request = FetchPlaceRequest.newInstance(placeID, placeMoreFields);
 
@@ -119,7 +125,10 @@ public class DetailsActivity extends AppCompatActivity {
                 Place place = fetchPlaceResponse.getPlace();
                 Log.i(TAG, "Place found: " + place.getName());
                 tvPlaceName.setText(place.getName());
-                tvRating.setText("Place Rating: " + place.getRating().toString());
+                placeName = place.getName();
+                tvRating.setText("Google Place Rating: " + place.getRating().toString());
+                tvUserRating.setText("Number of User Ratings: " + place.getUserRatingsTotal());
+
 
                 // image request
                 final List<PhotoMetadata> metadata = place.getPhotoMetadatas();
