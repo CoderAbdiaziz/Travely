@@ -3,8 +3,8 @@ package com.example.travely;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.text.style.CharacterStyle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.location.places.Place;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.AutocompletePrediction;
 import com.google.android.libraries.places.api.model.AutocompleteSessionToken;
+import com.google.android.libraries.places.api.model.PhotoMetadata;
+import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.FetchPhotoRequest;
+import com.google.android.libraries.places.api.net.FetchPhotoResponse;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
+import com.google.android.libraries.places.api.net.FetchPlaceResponse;
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
@@ -32,9 +36,12 @@ public class DetailsActivity extends AppCompatActivity {
     public static final String TAG = "DetailsActivity";
     ImageView ivPlaceImage;
     TextView tvPlaceName;
-    TextView tvDescription;
+    TextView tvRating;
     Button btnFavorite;
     String placeID;
+    PlacesClient placesClient;
+    String attributions;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +50,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         ivPlaceImage = findViewById(R.id.ivPlaceImage);
         tvPlaceName = findViewById(R.id.tvPlaceName);
-        tvDescription = findViewById(R.id.tvDescription);
+        tvRating = findViewById(R.id.tvRating);
         btnFavorite = findViewById(R.id.btnFavorite);
         btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,12 +58,13 @@ public class DetailsActivity extends AppCompatActivity {
                 // TODO: add the designated place to the users favorites list by appending to the array in the parse database
             }
         });
-        querypost();
+        queryPost();
+
 
 
     }
 
-    private void querypost() {
+    private void queryPost() {
         String query = getIntent().getStringExtra("search text");
 
         // Create a new token for the autocomplete session. Pass this to FindAutocompletePredictionsRequest,
@@ -72,7 +80,7 @@ public class DetailsActivity extends AppCompatActivity {
                 .build();
 
         Places.initialize(getApplicationContext(), "AIzaSyAZ0awcpunwA1bcM5tUajHj_XXeRfg9hZw");
-        PlacesClient placesClient = Places.createClient(this);
+        placesClient = Places.createClient(this);
 
         placesClient.findAutocompletePredictions(request).addOnSuccessListener(new OnSuccessListener<FindAutocompletePredictionsResponse>() {
             @Override
@@ -81,7 +89,10 @@ public class DetailsActivity extends AppCompatActivity {
                     placeID = prediction.getPlaceId();
                     Log.i(TAG, prediction.getPlaceId());
                     Log.i(TAG, prediction.getPrimaryText(null).toString());
+                    Log.i(TAG, "PlaceID inside the function "+ placeID);
                 }
+                placeGet();
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -89,6 +100,62 @@ public class DetailsActivity extends AppCompatActivity {
                 if (e instanceof ApiException) {
                     ApiException apiException = (ApiException) e;
                     Log.e(TAG, "Place not found: " + apiException.getStatusCode());
+                }
+            }
+        });
+
+    }
+
+    private void placeGet() {
+        // Construct a request object, passing the place ID and fields array.
+
+        List<com.google.android.libraries.places.api.model.Place.Field> placeMoreFields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.PHOTO_METADATAS, Place.Field.RATING);
+
+        final FetchPlaceRequest request = FetchPlaceRequest.newInstance(placeID, placeMoreFields);
+
+        placesClient.fetchPlace(request).addOnSuccessListener(new OnSuccessListener<FetchPlaceResponse>() {
+            @Override
+            public void onSuccess(FetchPlaceResponse fetchPlaceResponse) {
+                Place place = fetchPlaceResponse.getPlace();
+                Log.i(TAG, "Place found: " + place.getName());
+                tvPlaceName.setText(place.getName());
+                tvRating.setText("Place Rating: " + place.getRating().toString());
+
+                // image request
+                final List<PhotoMetadata> metadata = place.getPhotoMetadatas();
+
+                PhotoMetadata photoMetadata = metadata.get(0);
+                // Create a FetchPhotoRequest.
+                final FetchPhotoRequest photoRequest = FetchPhotoRequest.builder(photoMetadata)
+                        .setMaxWidth(500) // Optional.
+                        .setMaxHeight(300) // Optional.
+                        .build();
+
+                placesClient.fetchPhoto(photoRequest).addOnSuccessListener(new OnSuccessListener<FetchPhotoResponse>() {
+                    @Override
+                    public void onSuccess(FetchPhotoResponse fetchPhotoResponse) {
+                        Bitmap bitmap = fetchPhotoResponse.getBitmap();
+                        ivPlaceImage.setImageBitmap(bitmap);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        final ApiException apiException = (ApiException) e;
+                        Log.e(TAG, "Place not found: " + e.getMessage());
+                        final int statusCode = apiException.getStatusCode();
+                        // TODO: Handle error with given status code.
+                    }
+                });
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (e instanceof ApiException) {
+                    final ApiException apiException = (ApiException) e;
+                    Log.e(TAG, "Place not found: " + e.getMessage());
+                    final int statusCode = apiException.getStatusCode();
+                    // TODO: Handle error with given status code.
                 }
             }
         });

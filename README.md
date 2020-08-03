@@ -38,12 +38,11 @@ A traveling app! An app where the user can select a point on a map where they ar
     * able to remove places from your favorites list
     * This option will be on the place details page
 * Searching a place should give you details of that place
-    * Picture, Description, Rating
-* Share your favorites list with a friend on Facebook
+    * Picture, name, Description, Rating
 * Feed fragment where it shows other peoples favorites lists
-<!-- Complex algorithm where your feed is based on your favorites list -->
 * animation for when a place has been favorited
 * algorithm that shows people on your feed that have similar favorites
+* adding/changing profile picture
 
 **Optional Nice-to-have Stories**
 
@@ -54,6 +53,7 @@ A traveling app! An app where the user can select a point on a map where they ar
 * customize user pages with facebook information
 * a search option where you dont have to click the map and can go to a specific place right away
     * search option will appear on the favorites, placelist, and map page in order to look for a particular place
+* Share your favorites list with a friend on Facebook
 
 
 
