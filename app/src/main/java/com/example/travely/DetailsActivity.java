@@ -29,9 +29,13 @@ import com.google.android.libraries.places.api.net.FetchPlaceResponse;
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.gson.JsonObject;
+import com.parse.ParseUser;
 
+import org.json.JSONArray;
 import org.w3c.dom.Text;
-
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +51,6 @@ public class DetailsActivity extends AppCompatActivity {
     String placeID;
     PlacesClient placesClient;
     String placeName;
-    List<String> favoritesList = new ArrayList<String>();
     protected FavoritesAdapter adapter;
 
 
@@ -65,14 +68,16 @@ public class DetailsActivity extends AppCompatActivity {
         btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: add the designated place to the users favorites list by appending to the array in the parse database
-                if(placeName != null) {
-                    adapter.add(placeName);
-                }
-                // tester if my list is actually getting updated on the click of the favorites button
-                for (int counter = 0; counter < favoritesList.size(); counter ++) {
-                    Log.i(TAG, "List: " + favoritesList.get(counter));
-                }
+                    // TODO: update the parse dashboard list and not the adapter
+                Log.i(TAG, "PLACE NAME IS: " + placeName);
+
+                ParseUser user = ParseUser.getCurrentUser();
+                JSONArray favorites = new JSONArray();
+                favorites = user.getJSONArray(Post.FAVORITE_LIST);
+                favorites.put(placeName);
+                user.put(Post.FAVORITE_LIST, favorites);
+                user.saveInBackground();
+
             }
         });
         queryPost();
@@ -179,4 +184,6 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

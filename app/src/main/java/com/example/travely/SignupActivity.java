@@ -14,6 +14,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import org.json.JSONArray;
+
 public class SignupActivity extends AppCompatActivity {
 
 
@@ -56,6 +58,8 @@ public class SignupActivity extends AppCompatActivity {
         // Set core properties
         user.setUsername(username);
         user.setPassword(password);
+        JSONArray fav = new JSONArray();
+        user.put("favoriteList", fav);
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e != null) {
