@@ -19,6 +19,7 @@ import com.google.gson.JsonArray;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.json.JSONArray;
 
@@ -29,7 +30,7 @@ public class FavoritesFragment extends Fragment {
 
     RecyclerView rvFavorites;
     protected FavoritesAdapter adapter;
-    JsonArray allPlaces;
+    JSONArray allPlaces;
 
 
 
@@ -48,7 +49,7 @@ public class FavoritesFragment extends Fragment {
 
         rvFavorites = view.findViewById(R.id.rvFavorites);
 
-        allPlaces = new JsonArray();
+        allPlaces = new JSONArray();
         adapter = new FavoritesAdapter(getContext(), allPlaces);
 
         rvFavorites.setAdapter(adapter);
@@ -56,7 +57,10 @@ public class FavoritesFragment extends Fragment {
         rvFavorites.setLayoutManager(new LinearLayoutManager(getContext()));
 //
 //        // TODO: currently the recyclerview list is empty. I have to update it and add to the list
-
+        ParseUser user = ParseUser.getCurrentUser();
+        allPlaces = user.getJSONArray(Post.FAVORITE_LIST);
+        adapter.addAll(allPlaces);
+        adapter.notifyDataSetChanged();
 
     }
 

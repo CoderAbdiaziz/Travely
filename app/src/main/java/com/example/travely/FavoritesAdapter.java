@@ -12,14 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.location.places.Place;
 import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.List;
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
 
     private Context context;
-    private JsonArray places;
+    private JSONArray places;
 
-    public FavoritesAdapter(Context context, JsonArray places) {
+    public FavoritesAdapter(Context context, JSONArray places) {
         this.context = context;
         this.places = places;
     }
@@ -33,17 +36,23 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String place = places.get(position).toString();
+        String place = null;
+        try {
+            place = places.get(position).toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         holder.bind(place);
     }
 
     @Override
     public int getItemCount() {
-        return places.size();
+        return places.length();
     }
 
-    public void addAll() {
-
+    public void addAll(JSONArray allPlaces) {
+        places = allPlaces;
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

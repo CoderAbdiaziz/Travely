@@ -51,7 +51,6 @@ public class DetailsActivity extends AppCompatActivity {
     String placeID;
     PlacesClient placesClient;
     String placeName;
-    protected FavoritesAdapter adapter;
 
 
 
