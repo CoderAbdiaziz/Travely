@@ -33,6 +33,8 @@ import com.parse.ParseUser;
 
 import java.io.File;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 import static android.app.Activity.RESULT_OK;
 
 
@@ -61,18 +63,13 @@ public class ProfileFragment extends Fragment {
         ParseUser user = ParseUser.getCurrentUser();
         ivProfilePic = view.findViewById(R.id.ivProfilePic);
 
-        // if user doesn't have a picture, then put a default picture
-        if(user.getParseFile("profilePic")==null){
-            Glide.with(getContext())
-                    .load("https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png")
-                    .into(ivProfilePic);
-        }
-        // if user does have a picture, then put that as their profile picture
-        else {
+        int radius = 30; // corner radius, higher value = more rounded
+        int margin = 10; // crop margin, set to 0 for corners with no crop
             Glide.with(getContext())
                     .load(user.getParseFile(Post.PROFILE_PIC).getUrl())
+                    .transform(new RoundedCornersTransformation(radius, margin))
                     .into(ivProfilePic);
-        }
+
 
 
         tvUsername = view.findViewById(R.id.tvUsername);

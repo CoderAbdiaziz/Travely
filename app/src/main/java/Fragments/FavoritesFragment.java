@@ -20,6 +20,7 @@ import com.example.travely.R;
 import com.google.gson.JsonArray;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -78,10 +79,12 @@ public class FavoritesFragment extends Fragment {
 
     private void newPost() {
         ParseUser currentUser = ParseUser.getCurrentUser();
+        JSONArray favorites = currentUser.getJSONArray(Post.FAVORITE_LIST);
+        ParseFile photo = currentUser.getParseFile(Post.PROFILE_PIC);
         Post post = new Post();
-        post.setUser(currentUser);
-        post.setFavoriteList(currentUser.getJSONArray(Post.FAVORITE_LIST));
-        post.setProfilePic(currentUser.getParseFile(Post.PROFILE_PIC));
+        post.put("username", currentUser);
+        post.put("profilePic", photo);
+        post.put("favoriteList", favorites);
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -90,6 +93,9 @@ public class FavoritesFragment extends Fragment {
                     Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
                 Log.i(TAG, "Post save was successful!!");
+                Toast.makeText(getContext(), "You have shared your list!", Toast.LENGTH_SHORT).show();
+
+
             }
         });
     }

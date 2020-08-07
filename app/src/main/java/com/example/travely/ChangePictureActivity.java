@@ -52,10 +52,9 @@ public class ChangePictureActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ParseUser user = ParseUser.getCurrentUser();
-                String id = user.getUsername();
-                JSONArray favorites = user.getJSONArray("favoriteList");
                 ParseFile file = new ParseFile(photoFile);
                 user.put("profilePic", file);
+                user.saveInBackground();
                 finish();
             }
         });

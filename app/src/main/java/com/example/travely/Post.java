@@ -23,28 +23,28 @@ public class Post extends ParseObject {
 
     }
 
-    public static void getPost() {
-        ParseUser.getCurrentUser();
-        // Specify which class to query
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-// Specify the object id
-        query.getInBackground("gYsSH4SVkn", new GetCallback<Post>() {
-            public void done(Post post, ParseException e) {
-                if (e == null) {
-                    // Access data using the `get` methods for the object
-                    JSONArray favorites = post.getFavoriteList();
-                    // Access special values that are built-in to each object
-                    String objectId = post.getObjectId();
-
-                    Date createdAt = post.getCreatedAt();
-                    // Do whatever you want with the data...
-//                    Toast.makeText(DetailsActivity.class, "Favorites added", Toast.LENGTH_SHORT).show();
-                } else {
-                    // something went wrong
-                }
-            }
-        });
-    }
+//    public static void getPost() {
+//        ParseUser.getCurrentUser();
+//        // Specify which class to query
+//        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+//// Specify the object id
+//        query.getInBackground("gYsSH4SVkn", new GetCallback<Post>() {
+//            public void done(Post post, ParseException e) {
+//                if (e == null) {
+//                    // Access data using the `get` methods for the object
+//                    JSONArray favorites = post.getFavoriteList();
+//                    // Access special values that are built-in to each object
+//                    String objectId = post.getObjectId();
+//
+//                    Date createdAt = post.getCreatedAt();
+//                    // Do whatever you want with the data...
+////                    Toast.makeText(DetailsActivity.class, "Favorites added", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    // something went wrong
+//                }
+//            }
+//        });
+//    }
 
     public JSONArray getFavoriteList(){
         return getJSONArray(FAVORITE_LIST);
