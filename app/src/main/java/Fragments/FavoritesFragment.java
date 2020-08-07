@@ -57,6 +57,7 @@ public class FavoritesFragment extends Fragment {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 newPost();
             }
         });

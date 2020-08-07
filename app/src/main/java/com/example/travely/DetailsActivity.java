@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -51,7 +52,7 @@ public class DetailsActivity extends AppCompatActivity {
     String placeID;
     PlacesClient placesClient;
     String placeName;
-
+    Context context;
 
 
     @Override
@@ -76,7 +77,6 @@ public class DetailsActivity extends AppCompatActivity {
                 favorites.put(placeName);
                 user.put(Post.FAVORITE_LIST, favorites);
                 user.saveInBackground();
-
             }
         });
         queryPost();
