@@ -16,7 +16,7 @@ import java.util.Date;
 public class Post extends ParseObject {
     public static final String FAVORITE_LIST = "favoriteList";
     public static final String KEY_CREATED_AT = "createdAt";
-    public static final String PROFILE_PIC = "Picture";
+    public static final String PROFILE_PIC = "profilePic";
     public static final String KEY_USER = "username";
 
     public Post() {
