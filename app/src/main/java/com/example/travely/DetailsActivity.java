@@ -108,6 +108,9 @@ public class DetailsActivity extends AppCompatActivity {
             public void onSuccess(FindAutocompletePredictionsResponse findAutocompletePredictionsResponse) {
                 for (AutocompletePrediction prediction : findAutocompletePredictionsResponse.getAutocompletePredictions()) {
                     placeID = prediction.getPlaceId();
+
+
+
                     Log.i(TAG, prediction.getPlaceId());
                     Log.i(TAG, prediction.getPrimaryText(null).toString());
                 }
